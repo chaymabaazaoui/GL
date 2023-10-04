@@ -10,10 +10,13 @@ public class ExerciceAvecThreads {
     public void exemple() {
 
         Scenario s = makeScenario();
+        
         // On cree les bandeaux
         Bandeau b1 = new Bandeau();
         Bandeau b2 = new Bandeau();
         Bandeau b3 = new Bandeau();
+        //Demarrer le thread
+       
         System.out.println("CTRL-C pour terminer le programme");
         // On doit jouer le scénario en même temps sur les trois bandeaux
         s.playOn(b1);

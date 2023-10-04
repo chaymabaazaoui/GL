@@ -23,6 +23,7 @@ public class Scenario {
 
     private final List<ScenarioElement> myElements = new LinkedList<>();
 
+
     /**
      * Ajouter un effect au scenario.
      *
@@ -39,10 +40,18 @@ public class Scenario {
      * @param b le bandeau ou s'afficher.
      */
     public void playOn(Bandeau b) {
-        for (ScenarioElement element : myElements) {
+        Thread t = new Thread(){
+        public void run(){
+            synchronized(b){
+                for (ScenarioElement element : myElements) {
             for (int repeats = 0; repeats < element.repeats; repeats++) {
                 element.effect.playOn(b);
             }
-        }
-    }
+           }
+          }
+        } 
+        };
+        t.start();
 }
+}
+
